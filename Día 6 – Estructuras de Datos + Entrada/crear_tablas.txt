@@ -1,0 +1,4 @@
+nombre,['ciudad']
+fabio,Villa altagracia
+carlina
+Villa altagracia
