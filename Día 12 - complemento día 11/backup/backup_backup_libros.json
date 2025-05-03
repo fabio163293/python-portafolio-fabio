@@ -1,0 +1,20 @@
+[
+    {
+        "titulo": "Amanda",
+        "autor": "Julio Espera",
+        "epoca": 1997,
+        "estado": true
+    },
+    {
+        "titulo": "Cielo Azul",
+        "autor": "Julio Espera",
+        "epoca": 2001,
+        "estado": false
+    },
+    {
+        "titulo": "Palomo en la mano",
+        "autor": "Fabio Alvarez",
+        "epoca": 2025,
+        "estado": false
+    }
+]
