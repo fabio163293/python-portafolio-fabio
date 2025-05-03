@@ -1,13 +1,16 @@
 #!python
+#uso para que el sistema sepa que debe utilizar Python y evitar errores de caracteres
+#Used so the system knows to use Python and to avoid character encoding errors
 import os
 
 #imprime por consola la ruta usada
-
+#Print the used path to the console
 def imprimir_ruta():
     mi_ruta = os.getcwd()
     print(mi_ruta)
 
 #crear estructura de carpetas
+#Create folder structure
 def crear_estructura(nombre_estructura):
     carpetas = [
 
@@ -22,18 +25,20 @@ def crear_estructura(nombre_estructura):
         os.makedirs(carpeta, exist_ok=True)
         print(f'Creada/existe: {carpeta}')
 
+#renombra archivos con un prefijo mas su nombre
+#Rename files with a prefix plus their name
 def renombrar_archivo(directorio, prefijo):
     for archivo in os.listdir(directorio):
-        if os.path.isfile(directorio, archivo):
+        if os.path.isfile(archivo):
             nuevo_nombre = f"{prefijo}_{archivo}"
             os.rename(
                 os.path.join(directorio, archivo),
                 os.path.join(directorio , nuevo_nombre)
             )
-        print(f"renombrado: {archivo} a {nuevo_nombre}")        
+            print(f"renombrado: {archivo} a {nuevo_nombre}")        
 
 #Busca archivos por extension y te dice su ruta actual
-#
+#Search for files by extension and display their current path
 def buscar_archivo(directorio, extension):
     encontrados = []
     for ruta, _, archivos in os.walk(directorio):
@@ -49,6 +54,7 @@ for archivo in archivos_txt:
 
 def organizar_archivos(directorio):
     # Diccionario de extensiones y carpetas destino
+    # Dictionary of extensions and destination folders
     categorias = {
         '.jpg': 'imagenes',
         '.png': 'imagenes',
@@ -57,10 +63,12 @@ def organizar_archivos(directorio):
     }
     
     # Crear carpetas si no existen
+    # Create folders if they do not exist
     for carpeta in set(categorias.values()):
         os.makedirs(os.path.join(directorio, carpeta), exist_ok=True)
     
     # Mover archivos
+    # Move files
     for archivo in os.listdir(directorio):
         ruta_archivo = os.path.join(directorio, archivo)
         if os.path.isfile(ruta_archivo):
@@ -70,8 +78,18 @@ def organizar_archivos(directorio):
                 os.rename(ruta_archivo, destino)
                 print(f'Movido: {archivo} -> {categorias[extension]}')
 
-organizar_archivos('.')    
+def main():
+   #ejemplo de uso
+   #Example of use
+   imprimir_ruta()
+   crear_estructura('dia_11')
+   renombrar_archivo('.', 'backup')
+   organizar_archivos('.')
+   buscar_archivo('.','.txt')
 
 
+        
 
-             
+
+if __name__ == "__main__":
+    main()
