@@ -1,0 +1,15 @@
+[
+    {
+        "producto": "tomate",
+        "precio": 70,
+        "disponibles": 95,
+        "fecha ingreso": "2025-05-04 21:47"
+    },
+    {
+        "producto": "aguacate",
+        "precio": 85,
+        "disponibles": 300,
+        "fecha ingreso": "2025-05-04 22:04",
+        "cantidad": 150
+    }
+]
