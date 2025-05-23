@@ -1,5 +1,5 @@
 import sqlite3
-from dia_24.producto import Producto
+from producto import Producto
 
 def crear_bd():
     # Crea la base de datos y la tabla productos
@@ -126,27 +126,3 @@ def actualizar_stock_por_id(producto_id, nuevo_stock):
     finally:
         if conn:
             conn.close()
-def obtener_producto_por_id(producto_id):
-    # Obtiene un producto por su ID directamente desde la base de datos
-    # Retrieves a product by its ID directly from the database
-    try:
-        conn = sqlite3.connect('inventario.db')
-        cursor = conn.cursor()
-
-        cursor.execute("SELECT id, nombre, categoria, precio, stock FROM productos WHERE id = ?", (producto_id,))
-        fila = cursor.fetchone()
-
-        if fila:
-            id_, nombre, categoria, precio, stock = fila
-            producto = Producto(nombre, categoria, precio, stock)
-            producto.id = id_
-            return producto
-        return None
-
-    except sqlite3.Error as e:
-        print(f"Error al obtener producto por ID: {e}")
-        print(f"Error retrieving product by ID: {e}")
-        return None
-    finally:
-        if conn:
-            conn.close()            
